@@ -2,6 +2,7 @@
 package com.vanniktech.onactivityresult.sample;
 
 import android.content.Intent;
+import android.location.Location;
 import onactivityresult.IntentHelper;
 import onactivityresult.internal.IOnActivityResult;
 
@@ -21,6 +22,12 @@ public class MySampleMainActivity$$OnActivityResult<T extends MySampleMainActivi
       }
       t.onHumuHumu();
       didHandle = true;
+    } else if (requestCode == 2) {
+      if (resultCode == -1) {
+        final Location select_locationExtraLocation = IntentHelper.getExtraParcelable(intent, "select_location", null);
+        t.onSelectedLocation(select_locationExtraLocation);
+        didHandle = true;
+      }
     }
     return didHandle;
   }

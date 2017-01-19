@@ -1,8 +1,10 @@
 package com.vanniktech.onactivityresult.sample;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.vanniktech.onactivityresult.sample.databinding.ActivityMySampleMainBi
 import java.util.ArrayList;
 
 import onactivityresult.ActivityResult;
+import onactivityresult.Extra;
 import onactivityresult.ExtraString;
 import onactivityresult.OnActivityResult;
 
@@ -21,6 +24,7 @@ public class MySampleMainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private static final int REQUEST_SELECT_IMAGE = 1;
+    private static final int REQUEST_SELECT_LOCATION = 2;
 
     private ActivityMySampleMainBinding binding;
 
@@ -38,6 +42,13 @@ public class MySampleMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivityForResult(ImageSelectActivity.createIntent(MySampleMainActivity.this), REQUEST_SELECT_IMAGE);
+            }
+        });
+
+        binding.selectLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(LocationSelectActivity.createIntent(MySampleMainActivity.this), REQUEST_SELECT_LOCATION);
             }
         });
     }
@@ -68,5 +79,10 @@ public class MySampleMainActivity extends AppCompatActivity {
     @OnActivityResult(requestCode = REQUEST_SELECT_IMAGE, resultCodes = ImageSelectActivity.RESULT_CODE_TAKE_PHOTO)
     void onTakePhoto(@ExtraString(name = ImageSelectActivity.RESULT_TAKE_PHOTO) final String takePhoto) {
         Toast.makeText(this, "onTakePhoto takePhoto : " + takePhoto, Toast.LENGTH_SHORT).show();
+    }
+
+    @OnActivityResult(requestCode = REQUEST_SELECT_LOCATION, resultCodes = Activity.RESULT_OK)
+    void onSelectedLocation(@Extra(name = LocationSelectActivity.RESULT_SELECT_LOCATION) Location location) {
+        Toast.makeText(this, "onSelectedLocation location: " + location, Toast.LENGTH_SHORT).show();
     }
 }
