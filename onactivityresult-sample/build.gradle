@@ -21,6 +21,9 @@ android {
         versionCode 1
         versionName '1.0'
     }
+    dataBinding {
+        enabled true
+    }
 
     def shouldSign = project.hasProperty('RELEASE_STORE_FILE') && project.hasProperty('RELEASE_STORE_PASSWORD') && project.hasProperty('RELEASE_KEY_ALIAS') && project.hasProperty('RELEASE_KEY_PASSWORD')
 
@@ -57,7 +60,7 @@ android {
         }
 
         debug {
-            minifyEnabled true
+            minifyEnabled false
         }
     }
 }

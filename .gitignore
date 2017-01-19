@@ -37,3 +37,22 @@ Thumbs.db
 # Eclipse project files
 .classpath
 .project
+
+onactivityresult-sample/build/*
+
+!onactivityresult-sample/build/generated
+onactivityresult-sample/build/generated/*
+!onactivityresult-sample/build/generated/source
+onactivityresult-sample/build/generated/source/*
+!onactivityresult-sample/build/generated/source/apt
+onactivityresult-sample/build/generated/source/apt/*
+!onactivityresult-sample/build/generated/source/apt/debug
+onactivityresult-sample/build/generated/source/apt/debug/*
+!onactivityresult-sample/build/generated/source/apt/debug/com
+onactivityresult-sample/build/generated/source/apt/debug/com/*
+!onactivityresult-sample/build/generated/source/apt/debug/com/vanniktech/onactivityresult
+onactivityresult-sample/build/generated/source/apt/debug/com/vanniktech/onactivityresult/*
+!onactivityresult-sample/build/generated/source/apt/debug/com/vanniktech/onactivityresult/sample
+onactivityresult-sample/build/generated/source/apt/debug/com/vanniktech/onactivityresult/sample/databinding/*
+onactivityresult-sample/build/generated/source/apt/debug/com/vanniktech/onactivityresult/sample/BR.java
+onactivityresult-sample/build/generated/source/apt/debug/com/vanniktech/onactivityresult/sample/*_ViewBinding.java

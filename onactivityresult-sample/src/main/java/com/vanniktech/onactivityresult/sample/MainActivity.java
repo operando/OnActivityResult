@@ -1,6 +1,7 @@
 package com.vanniktech.onactivityresult.sample;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int    REQUEST_CODE_TEST_2_ACTIVITY = 5;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
+
+    public static Intent createIntent(Context context) {
+        Intent i = new Intent(context, MainActivity.class);
+        return i;
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
