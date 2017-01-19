@@ -24,9 +24,10 @@ public class MySampleMainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private static final int REQUEST_SELECT_IMAGE = 1;
-    private static final int REQUEST_SELECT_LOCATION = 2;
+    static final int REQUEST_SELECT_LOCATION = 2;
 
     private ActivityMySampleMainBinding binding;
+    private MySampleMainViewModel viewModel = new MySampleMainViewModel();
 
     public static Intent createIntent(Context context) {
         Intent i = new Intent(context, MySampleMainActivity.class);
@@ -37,6 +38,7 @@ public class MySampleMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_my_sample_main);
+        binding.setViewModel(viewModel);
 
         binding.selectImages.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +59,7 @@ public class MySampleMainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         ActivityResult.onResult(requestCode, resultCode, data).into(this);
+        ActivityResult.onResult(requestCode, resultCode, data).into(viewModel);
     }
 
     @OnActivityResult(requestCode = REQUEST_SELECT_IMAGE)
